@@ -1,4 +1,13 @@
 #!/usr/bin/env python
+####################################################################################################
+#
+# More information: https://macmule.com/2015/12/14/accessing-airwatchs-rest-api-with-python/
+#
+# GitRepo: https://github.com/macmule/AW-API-Scripts/
+#
+# License: http://macmule.com/license/
+#
+####################################################################################################
 
 import logging
 import os 
