@@ -58,7 +58,7 @@ def sendEmail(statusMessage):
 try:
 	# Log we're starting
 	logging.info('-------- Started Checking for Employee Owned Devices to Delete --------')
-	# API call, pulling in all Employee Owned devices from the OG "All Peoples Devices"
+	# API call, pulling in device information
 	awTest = requests.get("https://" + consoleURL + "/API/v1/mdm/devices/search?ownership=" + ownershipLevel + "&lgid=" + locationGroupID + "&pagesize=" + lookupLimit, headers={"Authorization": "Basic " + b64EncodedAuth, "aw-tenant-code": tenantCode,"Accept": "application/json"}, timeout=30)
 	# If the above gives a 4XX or 5XX error
 	awTest.raise_for_status()
