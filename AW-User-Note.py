@@ -21,16 +21,16 @@ from email.mime.text import MIMEText
 scriptName =  os.path.basename(sys.argv[0])
 
 # Variables
-consoleURL = ''
-locationGroupID = ''
-b64EncodedAuth = ''
-tenantCode = ''
+consoleURL = 'cn32.airwatchportals.com'
+locationGroupID = '6214'
+b64EncodedAuth = 'YWlyd2F0Y2hBUEk6bWVkOSxTbGF5ZXI='
+tenantCode = '1KADIYMAAAG6A4GACQAA'
 lookupLimit = '10000'
-apiFolder = ''
+apiFolder = '/private/var/log/Airwatch API Logs/'
 logFileFullPath = os.path.join(apiFolder, os.path.basename(sys.argv[0]) + '.log')
-mailServer = ''
-mailFrom = ''
-mailTo = ''
+mailServer = 'mail.pentland.com'
+mailFrom = 'airwatch@LS-MAC-API-01.pentland.com'
+mailTo = 'ben.toms@pentland.com'
 
 # Configure Logging
 logging.basicConfig(filename=logFileFullPath,level=logging.WARNING,format='%(asctime)s %(levelname)s %(message)s',filemode='w')
@@ -60,9 +60,9 @@ try:
 	# If the above gives a 4XX or 5XX error
 	awTest.raise_for_status()
 	# Get the JSON from the above
-	deviceInfo = awTest.json()
+	deviceDetails = awTest.json()
 	# Pull in the "Devices' dict only
-	deviceInfo = deviceInfo['Devices']
+	deviceDetails = deviceDetails['Devices']
 # If the API call fails, report error as e
 except requests.exceptions.RequestException, e:
 	# Status message to use as subject for sendMail funtion
@@ -72,10 +72,10 @@ except requests.exceptions.RequestException, e:
 	sendEmail(statusMessage)
 
 # Log we're starting
-logging.warning('-------- Adding Notes to %s Devices --------' % len(deviceInfo))
+logging.warning('-------- Adding Notes to %s Devices --------' % len(deviceDetails))
 
-# For each device in the deviceInfo list
-for device in deviceInfo:
+# For each device in the deviceDetails list
+for device in deviceDetails:
 	# Get the devices ID as a string for concatenation
 	deviceID = str(device['Id']['Value'])
 	# Try to get the users ID, this fails if the device is unenrolled.. So we continue
@@ -124,4 +124,4 @@ for device in deviceInfo:
 		sendEmail(statusMessage)
 		
 # Advise how many Devices had notes added
-logging.warning('-------- Added Notes to %s Devices --------' % len(deviceInfo))
+logging.warning('-------- Added Notes to %s Devices --------' % len(deviceDetails))
