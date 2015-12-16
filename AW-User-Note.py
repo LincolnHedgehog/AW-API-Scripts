@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 ####################################################################################################
 #
-# More information: https://macmule.com/2015/12/16/retaining-enrolment-user-information-on-airwatch-via-the-api
+# More information: https://macmule.com/2015/12/15/retaining-enrolment-user-information-on-airwatch-via-the-api
 #
 # GitRepo: https://github.com/macmule/AW-API-Scripts/
 #
