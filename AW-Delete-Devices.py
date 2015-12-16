@@ -34,7 +34,7 @@ locationGroupID = ''
 deleteDeviceList = []
 
 # Configure Logging
-logging.basicConfig(filename=logFileFullPath,level=logging.DEBUG,format='%(asctime)s %(message)s',filemode='w')
+logging.basicConfig(filename=logFileFullPath,level=logging.DEBUG,format='%(asctime)s %(levelname)s %(message)s',filemode='w')
 
 # Send email		
 def sendEmail(statusMessage):
