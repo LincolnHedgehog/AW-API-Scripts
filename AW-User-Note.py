@@ -100,7 +100,7 @@ for device in deviceDetails:
 		payload = {"DeviceId": deviceID, "Note": employeeNote}
 		# Try to make the API call
 		try:
-			# API call, pulling in all Employee Owned devices from the OG "All Peoples Devices"
+			# API call, POST enrollment user details
 			#awTest = requests.post("https://" + consoleURL + "/API/v1/mdm/devices/" + deviceID + "/addnote", headers={"Authorization": "Basic " + b64EncodedAuth, "aw-tenant-code": tenantCode, "Content-type": "application/json" }, data=json.dumps(payload))
 			# Comment out the below & uncomment above when live
 			logging.warning(payload)
